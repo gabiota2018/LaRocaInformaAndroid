@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.larocainforma.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/misActividades"
+        android:name="com.example.larocainforma.ui.home.MisGruposActivos.MisActividades"
+        android:label="fragment_mis_actividades"
+        tools:layout="@layout/fragment_mis_actividades" >
+        <action
+            android:id="@+id/action_misActividades_to_detalleActividad"
+            app:destination="@id/detalleActividad" />
+    </fragment>
+    <fragment
+        android:id="@+id/perfil"
+        android:name="com.example.larocainforma.ui.home.Perfil.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/miSemana"
+        android:name="com.example.larocainforma.ui.home.MiSemana.MiSemana"
+        android:label="fragment_mi_semana"
+        tools:layout="@layout/fragment_mi_semana" >
+        <action
+            android:id="@+id/action_miSemana_to_detallePorDia"
+            app:destination="@id/detallePorDia" />
+    </fragment>
+    <fragment
+        android:id="@+id/puedoHacer"
+        android:name="com.example.larocainforma.ui.home.PosiblesActividades.PuedoHacer"
+        android:label="fragment_puedo_hacer"
+        tools:layout="@layout/fragment_puedo_hacer" >
+        <action
+            android:id="@+id/action_puedoHacer_to_gruposDisponibles"
+            app:destination="@id/gruposDisponibles" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleActividad"
+        android:name="com.example.larocainforma.ui.home.MisGruposActivos.DetalleGrupoActividad"
+        android:label="fragment_detalle_actividad"
+        tools:layout="@layout/fragment_detalle_grupoactividad" >
+        <action
+            android:id="@+id/action_detalleActividad_to_misActividades"
+            app:destination="@id/misActividades" />
+        <action
+            android:id="@+id/action_detalleActividad_to_avisosActividad"
+            app:destination="@id/avisosActividad" />
+    </fragment>
+    <fragment
+        android:id="@+id/avisosActividad"
+        android:name="com.example.larocainforma.ui.home.Avisos.AvisosActividad"
+        android:label="fragment_avisos_actividad"
+        tools:layout="@layout/fragment_avisos_actividad" >
+        <action
+            android:id="@+id/action_avisosActividad_to_detalleActividad"
+            app:destination="@id/detalleActividad" />
+    </fragment>
+    <fragment
+        android:id="@+id/gruposDisponibles"
+        android:name="com.example.larocainforma.ui.home.PosiblesActividades.GruposDisponibles"
+        android:label="fragment_grupos_disponibles"
+        tools:layout="@layout/fragment_grupos_disponibles" >
+        <action
+            android:id="@+id/action_gruposDisponibles_to_puedoHacer"
+            app:destination="@id/puedoHacer" />
+    </fragment>
+    <fragment
+        android:id="@+id/detallePorDia"
+        android:name="com.example.larocainforma.ui.home.MiSemana.DetallePorDia"
+        android:label="fragment_detalle_por_dia"
+        tools:layout="@layout/fragment_detalle_por_dia" >
+        <action
+            android:id="@+id/action_detallePorDia_to_miSemana"
+            app:destination="@id/miSemana" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearGrupo"
+        android:name="com.example.larocainforma.ui.home.Grupo.CrearGrupo"
+        android:label="fragment_crear_grupo"
+        tools:layout="@layout/fragment_crear_grupo" />
+</navigation>

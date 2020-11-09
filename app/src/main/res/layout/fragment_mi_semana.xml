@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.MiSemana.MiSemana"
+    >
+
+
+    <TextView
+        android:id="@+id/etL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="center_horizontal|left"
+        android:inputType="text"
+        android:text="Lunes"
+        android:textColor="#1A237E" />
+
+
+
+    <Spinner
+        android:id="@+id/spL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6F00"
+        android:theme="@style/TextAppearance.MaterialComponents.Body2" />
+
+
+    <TextView
+
+        android:id="@+id/etMa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="center_horizontal|left"
+        android:inputType="text"
+        android:text="Martes"
+        android:textColor="#1A237E" />
+
+
+
+    <Spinner
+        android:id="@+id/spMa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6F00" />
+
+    <TextView
+
+        android:id="@+id/etMi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="center_horizontal|left"
+        android:inputType="text"
+        android:text="Miércoles"
+        android:textColor="#1A237E" />
+
+    <Spinner
+        android:id="@+id/spMi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6F00" />
+
+    <TextView
+        android:id="@+id/etJ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="center_horizontal|left"
+        android:inputType="text"
+        android:text="Jueves"
+        android:textColor="#1A237E" />
+
+    <Spinner
+        android:id="@+id/spJ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6F00" />
+
+    <TextView
+        android:id="@+id/etV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="center_horizontal|left"
+        android:inputType="text"
+        android:text="Viernes"
+        android:textColor="#1A237E" />
+
+    <Spinner
+        android:id="@+id/spV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6F00"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/etS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="center_horizontal|left"
+        android:inputType="text"
+        android:text="Sábado"
+        android:textColor="#1A237E" />
+
+    <Spinner
+        android:id="@+id/spS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6F00" />
+
+    <TextView
+        android:id="@+id/etD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="center_horizontal|left"
+        android:inputType="text"
+        android:text="Domingo"
+        android:textColor="#1A237E" />
+
+    <Spinner
+        android:id="@+id/spD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6F00"
+
+        />
+
+</LinearLayout>
+

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.Grupo.CrearGrupo">
+
+
+    <Spinner
+        android:id="@+id/spActividades"
+        android:layout_width="352dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal|left"
+        android:hint="Actividades que puede crear grupo"/>
+
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="90dp"
+        android:ems="10"
+        android:enabled="true"
+        android:gravity="center_horizontal|left"
+        android:hint="El nombre es asignado automáticamente"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/swLunes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:text="Lunes"
+        android:textAlignment="textStart" />
+
+    <Switch
+        android:id="@+id/swMartes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:text="Martes" />
+    <Switch
+        android:id="@+id/swMiercoles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:text="Miércoles" />
+    <Switch
+        android:id="@+id/swJueves"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:text="Jueves" />
+    <Switch
+        android:id="@+id/swViernes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="290dp"
+        android:text="Viernes" />
+    <Switch
+        android:id="@+id/swSabado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:text="Sábado" />
+    <Switch
+        android:id="@+id/swDomingo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370dp"
+        android:text="Domingo" />
+
+
+
+    <Button
+        android:id="@+id/btnGuardarGrupo"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/design_default_color_on_secondary"
+        android:gravity="center_horizontal|left"
+        android:text="Crear Grupo"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEncargado" />
+
+
+</FrameLayout>

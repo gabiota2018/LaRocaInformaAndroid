@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.Logueo.Logueo">
+
+
+    <EditText
+        android:id="@+id/etUsuarioLogueo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="110dp"
+        android:ems="10"
+
+        android:gravity="center_horizontal|left"
+
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/largo"
+        tools:text="Juan" />
+
+
+    <EditText
+        android:id="@+id/etPasswordLogueo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="170dp"
+        android:ems="10"
+
+        android:gravity="center_horizontal|left"
+
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMailLogueo"
+        tools:text="123" />
+
+    <TextView
+        android:id="@+id/tvMensajeLogueo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Datos invalidos"
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        android:textSize="15dp"
+        android:visibility="invisible"/>
+    <Button
+        android:id="@+id/btnEnviarLogueo"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="230dp"
+        android:background="@color/design_default_color_on_secondary"
+        android:gravity="center_horizontal|left"
+        android:text="INGRESAR"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        />
+    <!--tools:ignore="OnClick"-->
+
+
+</FrameLayout>
