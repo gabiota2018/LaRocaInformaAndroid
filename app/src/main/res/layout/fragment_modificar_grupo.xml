@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#BCBFBF"
+tools:context=".ui.home.AdministrarGrupo.ModificarGrupo">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#BCBFBF"
+        >
+
+        <TextView
+            android:id="@+id/tvNombreGrupoM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="#195046"
+            android:hint="Actividad del grupo'"
+            android:text="Actividad del grupo"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="24sp" />
+
+        <RadioGroup
+            android:id="@+id/rgModificar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7E5BAA"
+            >
+            <RadioButton
+                android:id="@+id/rbFechaInicioM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cambiar fecha de inicio" />
+            <RadioButton
+                android:id="@+id/rbFechaFinM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cambiar Fecha de finalización" />
+
+            <RadioButton
+                android:id="@+id/rbAgregarHorario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar Nuevo Horario" />
+
+            <RadioButton
+                android:id="@+id/rdbEliminarH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eliminar horario" />
+        </RadioGroup>
+
+
+
+        <!--xxxxxxxxxxxxxxxx         FECHAS            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+        <LinearLayout
+            android:id="@+id/lyFechasM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#F57F17"
+            android:backgroundTint="@color/colorAccent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnFechaIM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Inicia el" />
+
+            <EditText
+                android:id="@+id/etFechaInicioM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="dd/mm/aa"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <!--xxxxxxxxxxxxxxxx         FECHAS2            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+        <LinearLayout
+            android:id="@+id/lyFechas2M"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#80B6E1"
+            android:backgroundTint="@color/colorAccent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnFechaFM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Finaliza el" />
+
+            <EditText
+                android:id="@+id/etFechaFinM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="dd/mm/aa"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+        <!--xxxxxxxxxxxxxxxx   BTN GUARDAR FECHAS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <Button
+            android:id="@+id/btnGuardarFechaM"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="90dp"
+            android:layout_weight="1"
+            android:background="@color/design_default_color_on_secondary"
+            android:gravity="center_horizontal|left"
+            android:text="Guardar fecha modificada"
+            android:textAlignment="center"
+            android:textColor="#D4E4E3"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <!--xxxxxxxxxxxxxxxx         DIA SEMANA       xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <Spinner
+            android:id="@+id/spHorarios"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#FF6F00"
+            android:gravity="center_horizontal|left"
+            android:hint="Actividad que realizará el grupo"
+            android:visibility="gone" />
+
+        <!--xxxxxxxxxxxxxxxx         HORARIOS          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <LinearLayout
+            android:id="@+id/lyHorariosM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#DFD84E"
+            android:backgroundTint="@color/colorAccent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/lyBotonesM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="#BC7B9D"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <Button
+                    android:id="@+id/btnAnteriorM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Anterior" />
+
+                <Button
+                    android:id="@+id/btnDiaM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btnPosteriorM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Posterior" />
+            </LinearLayout>
+            <!--xxxxxxxxxxxxxxxx         HORAS            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <LinearLayout
+                android:id="@+id/lyHoraM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#25E834"
+                android:backgroundTint="@color/colorAccent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/btnHoraIM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hora Inicio" />
+
+                <EditText
+                    android:id="@+id/etInicioM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="00:00"
+                    android:inputType="textPersonName"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+            <!--xxxxxxxxxxxxxxxx         HORAS2            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <LinearLayout
+                android:id="@+id/lyHora2M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#616EEC"
+                android:backgroundTint="@color/colorAccent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/btnHoraFM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hora Fin" />
+
+                <EditText
+                    android:id="@+id/etFinM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="00:00"
+                    android:inputType="textPersonName"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <Button
+                android:id="@+id/btnGuardarHorarioM"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="90dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center_horizontal|left"
+                android:text="Guardar Horarios"
+                android:textAlignment="center"
+                android:textColor="@color/design_default_color_on_primary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    <!--xxxxxxxxxxxxxxxx         FINAL            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <LinearLayout
+            android:id="@+id/lyFinalM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/colorAccent"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:background="#DFD84E"
+            >
+
+
+            <EditText
+                android:id="@+id/etNombreM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:background="#3F9191"
+                android:ems="10"
+                android:enabled="true"
+                android:gravity="center_horizontal|left"
+                android:inputType="text"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

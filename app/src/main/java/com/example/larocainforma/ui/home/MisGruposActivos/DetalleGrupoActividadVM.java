@@ -128,7 +128,9 @@ public class DetalleGrupoActividadVM extends AndroidViewModel {
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     public ArrayList<String> cargaParticipantes(List<Usuario> listaU) {
+
         ArrayList<String> rta=new ArrayList<>();
+        rta.add("Participantes del grupo");
         for (Usuario usu:listaU) {
             rta.add(usu.getNombre()+" "+usu.getApellido()+" "+usu.getTelefono());
         }
@@ -136,6 +138,9 @@ public class DetalleGrupoActividadVM extends AndroidViewModel {
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     public void SalirDelGrupo(int grupoId) {
+
+
+
         Call<Participa> bajaCall = ApiClient.getMyApiClient().bajaParticipa(accessToken,grupoId);
         bajaCall.enqueue(new Callback<Participa>() {
             @Override

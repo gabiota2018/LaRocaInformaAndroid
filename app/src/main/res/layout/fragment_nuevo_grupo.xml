@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#BCBFBF"
+tools:context=".ui.home.AdministrarGrupo.NuevoGrupo">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#BCBFBF"
+    >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Seleccione la actividad que realizará el grupo"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:background="#3F9191"
+        android:textSize="14sp" />
+
+    <Spinner
+        android:id="@+id/spGrupos"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FF6F00"
+        android:gravity="center_horizontal|left"
+        android:hint="Actividad que realizará el grupo" />
+
+    <TextView
+        android:id="@+id/tv3crear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Ingrese la Fecha de Inicio y de Finalización"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:background="#3F9191"
+        android:textSize="14sp" />
+<!--xxxxxxxxxxxxxxxx         FECHAS            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+    <LinearLayout
+        android:id="@+id/lyFechas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorAccent"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/btnFechaI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Inicia el" />
+
+        <EditText
+            android:id="@+id/etFechaInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="dd/mm/aa"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <!--xxxxxxxxxxxxxxxx         FECHAS2            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+    <LinearLayout
+        android:id="@+id/lyFechas2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorAccent"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/btnFechaF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Finaliza el" />
+
+        <EditText
+            android:id="@+id/etFechaFin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="dd/mm/aa"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxXxxxxxxxxxxxxxx-->
+
+    <TextView
+        android:id="@+id/tv4crear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Seleccione día/s y horario/s en que funcionará el grupo, luego de cada ingreso presione 'Guardar'"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:background="#3F9191"
+        android:textSize="14sp" />
+    <!--xxxxxxxxxxxxxxxx         DIA SEMANA       xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <LinearLayout
+        android:id="@+id/lyBotones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+
+        <Button
+            android:id="@+id/btnAnterior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Anterior" />
+
+        <Button
+            android:id="@+id/btnDia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnPosterior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Posterior" />
+    </LinearLayout>
+    <!--xxxxxxxxxxxxxxxx         HORAS            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <LinearLayout
+        android:id="@+id/lyHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorAccent"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/btnHoraI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hora Inicio" />
+
+        <EditText
+            android:id="@+id/etInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="00:00"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+    <!--xxxxxxxxxxxxxxxx         HORAS2            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <LinearLayout
+        android:id="@+id/lyHora2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorAccent"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/btnHoraF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hora Fin" />
+
+        <EditText
+            android:id="@+id/etFin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="00:00"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <Button
+        android:id="@+id/btnGuardarHorario"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="90dp"
+        android:layout_weight="1"
+        android:background="@color/colorAccent"
+        android:gravity="center_horizontal|left"
+        android:text="Guardar"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="14sp" />
+    <!--xxxxxxxxxxxxxxxx         FINAL            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <LinearLayout
+        android:id="@+id/lyFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorAccent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+
+        <TextView
+            android:id="@+id/tv5crear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Al terminar de cargar los datos presione 'Crear Grupo'"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnCrearGrupo"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="50dp"
+            android:layout_weight="1"
+            android:background="@color/design_default_color_on_secondary"
+            android:gravity="center_horizontal"
+            android:text="Crear Grupo"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:enabled="true"
+            android:gravity="center_horizontal|left"
+            android:hint="El nombre es asignado automáticamente"
+            android:inputType="text"
+            android:textColor="#fff"
+            android:background="#3F9191"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>
+
+</ScrollView>

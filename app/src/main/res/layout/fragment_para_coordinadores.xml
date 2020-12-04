@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BCBFBF"
+    tools:context=".ui.home.AdministrarGrupo.ParaCoordinadores">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#135952"
+            android:orientation="vertical">
+
+
+
+            <RadioGroup
+                android:id="@+id/rgGrupo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="SELECCIONE UNA OPCIÓN"
+                    android:textAlignment="center"
+                    android:textColor="@color/design_default_color_on_secondary" />
+
+                <RadioButton
+                    android:id="@+id/rbEnviarMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:lineSpacingExtra="10sp"
+                    android:soundEffectsEnabled="true"
+                    android:text="ESCRIBIR MENSAJE"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbAgregar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:lineSpacingExtra="10sp"
+                    android:soundEffectsEnabled="true"
+                    android:text="AGREGAR GRUPO"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="10sp"
+                    android:soundEffectsEnabled="true"
+                    android:text="MODIFICAR GRUPO"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbSuspender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="10sp"
+                    android:soundEffectsEnabled="true"
+                    android:text="SUSPENDER GRUPO"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbBorrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="10sp"
+                    android:soundEffectsEnabled="true"
+                    android:text="TERMINAR  actividad del grupo"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbActivar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="10sp"
+                    android:soundEffectsEnabled="true"
+                    android:text="ACTIVAR GRUPO"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:saveEnabled="false"
+                    android:textAlignment="center"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:visibility="invisible"
+                    tools:visibility="visible" />
+
+                <Spinner
+                    android:id="@+id/spGrupos"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center_horizontal|left"
+                    android:saveEnabled="false"
+                    android:soundEffectsEnabled="true"
+                    android:visibility="invisible"
+                    tools:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/etEnviarMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="Escriba  aquí el mensaje que desee enviar al grupo"
+                    android:inputType="textMultiLine"
+                    android:saveEnabled="false"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:visibility="invisible" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/lyAmarillo"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="25dp"
+                android:background="#BCBFBF"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/tv5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:saveEnabled="false"
+                    android:text="Cuántos días estará vigente el aviso?"
+                    android:textAlignment="center"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:visibility="invisible"
+                    tools:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/etDias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/design_default_color_on_primary"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="7"
+                    android:textAlignment="center"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="7"
+                    tools:visibility="invisible" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnEnviarMensaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="25dp"
+                android:saveEnabled="true"
+                android:soundEffectsEnabled="false"
+                android:text="ENVIAR MENSAJE"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </ScrollView>

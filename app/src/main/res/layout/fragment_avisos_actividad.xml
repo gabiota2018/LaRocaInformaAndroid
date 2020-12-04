@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.Avisos.AvisosActividad">
+    tools:context=".AdministrarGrupo">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="350dp"
-        />
+        android:visibility="gone" />
 
     <ListView
         android:id="@+id/lvListaAvisos"

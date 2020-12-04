@@ -29,14 +29,12 @@ public class MiSemana extends Fragment {
     private MiSemanaVM vm;
     private Spinner spL,spMa,spMi,spJ,spV,spS,spD;
     private List<String> miLista;
+
     public MiSemana() {  }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

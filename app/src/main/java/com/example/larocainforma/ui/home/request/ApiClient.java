@@ -23,6 +23,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -30,7 +32,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public class ApiClient {
-    private static final String PATH="http://192.168.0.4:45455/api/";
+    private static final String PATH="http://192.168.0.8:45455/api/";//"http://192.168.0.4:45455/api/";192.168.0.8:45457/api/
     private static  MyApiInterface myApiInteface;
     private static String accessToken=null;
 
@@ -76,20 +78,45 @@ public class ApiClient {
         @GET("grupo/DetalleGrupo/{id}")
         Call<Grupo> detalleGrupo(@Header("Authorization") String token,@Path("id")int id);
 
+        @GET("grupo/MiniDetalleGrupo/{id}")
+        Call<Grupo> miniDetalleGrupo(@Header("Authorization") String token,@Path("id")int id);
+
+
         @GET("grupo/PorUsuario")
         Call<List<Grupo>> listarGruposUsuario(@Header("Authorization") String token);
+
+        @GET("grupo/PorCoordinador")
+        Call<List<Grupo>> listarGruposCoordinador(@Header("Authorization") String token);
 
         @GET("grupo/PorActividad/{id}")
         Call<List<Grupo>> gruposPorActividad(@Header("Authorization") String token,@Path("id")int id);
 
+        @DELETE("grupo")
+        Call<Grupo> cambiaEstado(@Header("Authorization") String token,@Body Grupo g);
 
-        //------ PARTICIPA -----------------------------------------------------------------------------------
+        @POST("grupo")
+        Call<Grupo> nuevoGrupo(@Header("Authorization") String token,@Body Grupo g);
+
+        @PUT("grupo")
+        Call<Grupo> actualizarGrupo(@Header("Authorization")String token,@Body Grupo p);
+
+
+//------ PARTICIPA -----------------------------------------------------------------------------------
+
         @DELETE("participa/BajaLogica/{id}")
         Call<Participa> bajaParticipa(@Header("Authorization")String token,@Path("id")int id);
+
+        @POST("participa/{id}")
+        Call<Participa> altaParticipa(@Header("Authorization")String token,@Path("id")int id);
+
 //------ AVISO -----------------------------------------------------------------------------------
 
         @GET("aviso/AvisoGrupo/{id}")
         Call<List<Aviso>> activosAvisosGrupo(@Header("Authorization") String token,@Path("id")int id);
+
+
+        @POST("aviso")
+        Call<Aviso> crearAvisos(@Header("Authorization")String token,@Body Aviso a);
 
 //------ AVISOsinVER -----------------------------------------------------------------------------------
 
@@ -103,37 +130,22 @@ public class ApiClient {
         @GET("utiliza/UtilizaPorUsuario")
         Call<List<Utiliza>> utilizaPorUsuario(@Header("Authorization") String token);
 
+        @POST("utiliza/Actualiza/{id}")
+        Call<Utiliza> actualizarUtiliza(@Header("Authorization") String token, @Path("id")int id);
+
+        @DELETE("utiliza/Desactivar")
+        Call<Utiliza> desactivar(@Header("Authorization") String token, @Body Utiliza p);
+
+//------ HORARIO -----------------------------------------------------------------------------------
+
+        @POST("horario/DevuelveId")
+        Call<Horario> crearHorario(@Header("Authorization")String token, @Body Horario p);
+
+        @GET("horario/HorariosPorGrupo/{id}")
+        Call<List<Horario>> horariosPorGrupo(@Header("Authorization") String token,@Path("id")int id);
 
 
-        //@GET("aviso/PorGrupo")
-        //Call<List<Aviso>> listarAvisosGrupo(@Header("Authorization") String token, @Path("id")int id);
-/*
-        @FormUrlEncoded
-        @PUT("usuario/{id}")
-        Call<DuenioEvento> guardar(@Header("Authorization")String authorizarion,
-                                   @Path("id")int idDuenio,
-                                   @Field("Nombre") String nombre,
-                                   @Field("Apellido")String apellido,
-                                   @Field("Correo") String correo,
-                                   @Field("Clave")String clave,
-                                   @Field("EstadoDuenio")int estado);
 
-        @GET("Inmuebles")
-        Call<List<Inmuebles>> listarInmuebles(@Header("Authorization") String token);
-
-        @GET("Inmuebles/{id}")
-        Call<Inmuebles> obtenerDatosInmueble(@Header("Authorization") String token,@Path("id")int id);
-
-        @PUT("Inmuebles/{id}")
-        Call<Inmuebles> actualizarInmueble(@Header("Authorization") String token, @Path("id") int id, @Body Inmuebles inmueble);
-
-        @POST("Inmuebles")
-        Call<Inmuebles> guardarInmueble(@Header("Authorization") String token, @Body Inmuebles inmueble);
-
-        @DELETE("Inmuebles/{id}")
-        Call<Inmuebles> bajaInmueble(@Header("Authorization")String token,@Path("id")int id);
-
-       */
     }
 
 }

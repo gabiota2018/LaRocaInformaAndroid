@@ -1,5 +1,7 @@
 package com.example.larocainforma.ui.home.PosiblesActividades;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.larocainforma.R;
 import com.example.larocainforma.ui.home.MisGruposActivos.DetalleGrupoActividadVM;
@@ -59,10 +62,42 @@ public class GruposDisponibles extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //dialogos
+               
+                darAlta();
+
+
             }
         });
 
         return view;
+    }
+    public  void darAlta(){
+
+
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(getContext(),R.style.Theme_MaterialComponents);
+        dialogo1.setTitle("Puedes ser un nuevo integrarte al grupo");
+        dialogo1.setMessage("Quiero participar del grupo");
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                aceptar(id);
+
+            }
+        });
+        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                cancelar();
+            }
+        });
+        dialogo1.show();
+    }
+    public void aceptar(int id) {
+       vm.EntrarAlGrupo(id);
+
+    }
+
+    public void cancelar() {
+        //finish();
+        Toast.makeText(getContext(),"CANCELADO", Toast.LENGTH_SHORT).show();
     }
 }

@@ -6,14 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.MisGruposActivos.MisActividades">
 
-    <!-- TODO: Update blank fragment layout
-    <TextView
-        android:id="@+id/tvMensajeActividades"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="350dp"
-        android:text="Mis Actividades"
-        tools:visibility="invisible" />-->
+
     <Button
         android:id="@+id/btnSiguiente1"
         android:layout_width="match_parent"
@@ -26,6 +19,7 @@
         android:text="btnSiguiente1"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent"

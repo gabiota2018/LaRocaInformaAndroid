@@ -85,8 +85,35 @@
             app:destination="@id/miSemana" />
     </fragment>
     <fragment
-        android:id="@+id/crearGrupo"
-        android:name="com.example.larocainforma.ui.home.Grupo.CrearGrupo"
-        android:label="fragment_crear_grupo"
-        tools:layout="@layout/fragment_crear_grupo" />
+        android:id="@+id/paraCoordinadores"
+        android:name="com.example.larocainforma.ui.home.AdministrarGrupo.ParaCoordinadores"
+        android:label="fragment_para_coordinadores"
+        tools:layout="@layout/fragment_para_coordinadores" >
+        <action
+            android:id="@+id/action_paraCoordinadores_to_nuevoGrupo"
+            app:destination="@id/nuevoGrupo" />
+        <action
+            android:id="@+id/action_paraCoordinadores_to_modificarGrupo"
+            app:destination="@id/modificarGrupo" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevoGrupo"
+        android:name="com.example.larocainforma.ui.home.AdministrarGrupo.NuevoGrupo"
+        android:label="fragment_nuevo_grupo"
+        tools:layout="@layout/fragment_nuevo_grupo" >
+        <action
+            android:id="@+id/action_nuevoGrupo_to_paraCoordinadores"
+            app:destination="@id/paraCoordinadores" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarGrupo"
+        android:name="com.example.larocainforma.ui.home.AdministrarGrupo.ModificarGrupo"
+        android:label="fragment_modificar_grupo"
+        tools:layout="@layout/fragment_modificar_grupo" >
+        <action
+            android:id="@+id/action_modificarGrupo_to_paraCoordinadores"
+            app:destination="@id/paraCoordinadores" />
+    </fragment>
+
+
 </navigation>

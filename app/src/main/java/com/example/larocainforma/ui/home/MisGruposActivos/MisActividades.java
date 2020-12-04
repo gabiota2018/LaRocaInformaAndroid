@@ -24,7 +24,6 @@ import java.util.List;
 public class MisActividades extends Fragment {
     private ListView lv;
     private MisActividadesVM vm;
-    private Button boton;
 
     public MisActividades() {}
 
@@ -60,22 +59,6 @@ public class MisActividades extends Fragment {
 
            }
         });
-
-
-
-
-
-
-
-     // boton=view.findViewById(R.id.btnSiguiente1);
-//      boton.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//          public void onClick(View view) {
-//            Bundle bundle=new Bundle();
-//            bundle.putString("palabra",palabra);
-//            Navigation.findNavController(view).navigate(R.id.detalleActividad);
-//            }
-//        });
       return  view;
     }
 

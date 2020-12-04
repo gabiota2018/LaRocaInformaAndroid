@@ -43,7 +43,7 @@ public class MiSemanaVM extends AndroidViewModel {
         SharedPreferences sp = context.getSharedPreferences("token", 0);
         String accessToken = sp.getString("token", "");
         Call<List<Utiliza>> utilizaCall=ApiClient.getMyApiClient().utilizaPorUsuario(accessToken);
-        Log.d("salida","entro a cargar datos");
+        //Log.d("salida","entro a cargar datos");
         utilizaCall.enqueue(new Callback<List<Utiliza>>() {
             @Override
             public void onResponse(Call<List<Utiliza>> call, Response<List<Utiliza>> response) {

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -13,6 +14,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.larocainforma.ui.home.Clases.AvisosSinVer;
 import com.example.larocainforma.ui.home.Clases.Grupo;
 import com.example.larocainforma.ui.home.Clases.Horario;
+import com.example.larocainforma.ui.home.Clases.Participa;
 import com.example.larocainforma.ui.home.request.ApiClient;
 
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class GruposDisponiblesVM  extends AndroidViewModel {
     private MutableLiveData<List<String>> listaDeGrupo;
     private Context context;
     private List<Grupo> todos;
+    private String accessToken;
 
     public GruposDisponiblesVM(@NonNull Application application) {
         super(application);
@@ -45,42 +48,36 @@ public class GruposDisponiblesVM  extends AndroidViewModel {
         String accessToken = sp.getString("token", "");
 
         String[] partes = palabra.split("-");
-        final int idGrupo = Integer.parseInt(partes[0]);
+        final int idActividad = Integer.parseInt(partes[0]);
         Log.d("salida","entro a grupoCall");
 
-        Call<List<Grupo>> grupoCall= ApiClient.getMyApiClient().gruposPorActividad(accessToken,idGrupo);
+        Call<List<Grupo>> grupoCall= ApiClient.getMyApiClient().gruposPorActividad(accessToken,idActividad);
         grupoCall.enqueue(new Callback<List<Grupo>>() {
             @Override
             public void onResponse(Call<List<Grupo>> call, Response<List<Grupo>> response) {
-
                 if(response.isSuccessful()){
                     todos=response.body();
                     ArrayList<String> listado=new ArrayList<>();
                     List<Horario> listaHorarios=new ArrayList<>();
                     String proximo,cadena="";
-
                     for(Grupo s:todos) {
                         String[] nombre=s.getName().split("-");
-                        cadena = s.getGrupoId() + "-" + nombre[0] + "";
+                        cadena =" * "+ s.getGrupoId() + "-" + nombre[0] + "";
+                       // Log.d("salida","grupo "+cadena);
                         listado.add(cadena);
                         cadena = "A cargo de: " + s.getCoordinador().getNombre() + " " + s.getCoordinador().getApellido();
-                        listado.add(cadena);
-                        cadena="";
-                        listaHorarios=s.getListaHorarios();
-                        for (Horario h : listaHorarios) {
-                            cadena+= "*"+nombreDia(h.getDia())+" de "+h.getHora_inicio()+" a "+h.getHora_fin();
+                        listado.add(cadena);Log.d("salida","cargo "+cadena);
+                        for (Horario h : s.getListaHorarios()) {
+                            cadena= " - "+h.getHorarioId()+"-"+h.getDia()+"-"+nombreDia(h.getDia())+" de "+h.getHora_inicio()+" a "+h.getHora_fin();
+                            //Log.d("salida","cadena que agrego al listado"+cadena);
+                            listado.add(cadena);
                         }
-                        listado.add(cadena);
                     }
                     listaDeGrupo.setValue(listado);
                 };
              }
-
-
             @Override
-            public void onFailure(Call<List<Grupo>> call, Throwable t) {
-
-            }
+            public void onFailure(Call<List<Grupo>> call, Throwable t) { }
         });
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -98,31 +95,21 @@ public class GruposDisponiblesVM  extends AndroidViewModel {
         return  proximo;
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    private String cadenaHorarios(){
-        String rta="";
-        int contador, lineas=0;
-       // contador = s.getListaHorarios().size();  Log.d("salida","size Horarios"+contador);
-        String cadena = "-";
-        String proximo = "";
+    public void EntrarAlGrupo(int grupoId) {
+        Call<Participa> altaCall = ApiClient.getMyApiClient().altaParticipa(accessToken,grupoId);
+        altaCall.enqueue(new Callback<Participa>() {
+            @Override
+            public void onResponse(Call<Participa> call, Response<Participa> response) {
+                if(response.isSuccessful())
+                    Toast.makeText(context, "¡Ya eres PARTE del GRUPO!!!", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<Participa> call, Throwable t) {
 
-//        if (contador != 0) {
-//            if (lineas == 2) {
-//                listado.add(cadena);
-//                cadena = "";
-//                lineas = 0;
-//                Log.d("salida","lineas == 2"+cadena);
-//            }
-//            if (lineas < 2) {
-//                cadena = cadena + proximo + " de " + h.getHora_inicio() + "-" + h.getHora_fin() + "___";
-//                lineas++;
-//                contador--;
-//                Log.d("salida","lineas < 2"+cadena);
-//            }
-//        } else {
-//            if (!cadena.equals("")) {listado.add(cadena);
-//                Log.d("salida","si tuviera un 3 renglon"+cadena);}
+            }
+        });
 
-        return rta;
-    }
+       }
+    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 }

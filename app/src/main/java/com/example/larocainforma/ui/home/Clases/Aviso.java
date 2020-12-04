@@ -13,6 +13,7 @@ public class Aviso {
     private Grupo grupo;
     private int activo ;
 
+    //avisoId-contenido-fecha_emitido-fecha_fin-usuarioId-usuario-grupoId-activo
     public Aviso() {
     }
 

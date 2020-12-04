@@ -15,6 +15,7 @@ public class Grupo {
     private Usuario coordinador;
     private String fecha_inicio;
     private String fecha_fin;
+    private int orden;
     private int borrado;
     private List<Usuario> listaParticipantes;
     private List<Aviso> listaAvisos;
@@ -24,7 +25,7 @@ public class Grupo {
 
     public Grupo() { }
 
-    public Grupo(int grupoId, String name, int actividadId, Actividad actividad, int coordinadorId, Usuario coordinador, String fecha_inicio, String fecha_fin, int borrado) {
+    public Grupo(int grupoId, String name, int actividadId, Actividad actividad, int coordinadorId, Usuario coordinador, String fecha_inicio, String fecha_fin, int orden, int borrado, List<Usuario> listaParticipantes, List<Aviso> listaAvisos, List<Horario> listaHorarios) {
         this.grupoId = grupoId;
         this.name = name;
         this.actividadId = actividadId;
@@ -33,18 +34,7 @@ public class Grupo {
         this.coordinador = coordinador;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
-        this.borrado = borrado;
-    }
-
-    public Grupo(int grupoId, String name, int actividadId, Actividad actividad, int coordinadorId, Usuario coordinador, String fecha_inicio, String fecha_fin, int borrado, List<Usuario> listaParticipantes, List<Aviso> listaAvisos, List<Horario> listaHorarios) {
-        this.grupoId = grupoId;
-        this.name = name;
-        this.actividadId = actividadId;
-        this.actividad = actividad;
-        this.coordinadorId = coordinadorId;
-        this.coordinador = coordinador;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
+        this.orden = orden;
         this.borrado = borrado;
         this.listaParticipantes = listaParticipantes;
         this.listaAvisos = listaAvisos;
@@ -113,6 +103,14 @@ public class Grupo {
 
     public void setFecha_fin(String fecha_fin) {
         this.fecha_fin = fecha_fin;
+    }
+
+    public int getOrden() {
+        return orden;
+    }
+
+    public void setOrden(int orden) {
+        this.orden = orden;
     }
 
     public int getBorrado() {

@@ -63,19 +63,20 @@ public class DetalleGrupoActividad extends Fragment {
         spCompanieros=view.findViewById(R.id.spCompanieros);
         btnDejarGrupo=view.findViewById(R.id.btnDejarGrupo);
         btnVerAvisos=view.findViewById(R.id.btnVerAvisos);
-
+       //------------------------------------------------------------------------------------------
         vm.getGrupoMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Grupo>() {
             @Override
             public void onChanged(Grupo grupo) {
                 etNombreGrupo.setText(grupo.getName());
-                etTema.setText("TEMA DE LA SEMANA PASADA");
+                etTema.setText("Ultimo Tema: Efesios 6");
                 String mensaje=  vm.calculaFecha(grupo.getListaHorarios());//proximaFecha(grupo.getListaHorarios());
-                etProximaReunion.setText(mensaje);
-                etEncargado.setText(grupo.getCoordinador().getApellido());
+                etProximaReunion.setText("Lunes de 20:30 a 21:30");
+                etEncargado.setText("Coordinador: "+grupo.getCoordinador().getApellido()+""+grupo.getCoordinador().getNombre());
                 cargarSpinner(grupo.getListaParticipantes());
                 miGrupo=grupo;
             }
         });
+        //------------------------------------------------------------------------------------------
         vm.getAsvMLD().observe(getViewLifecycleOwner(), new Observer<List<AvisosSinVer>>() {
             @Override
             public void onChanged(List<AvisosSinVer> avisosSinVers) {
@@ -89,12 +90,14 @@ public class DetalleGrupoActividad extends Fragment {
                 btnVerAvisos.setText(mensaje);
             }
         });
+        //------------------------------------------------------------------------------------------
         btnDejarGrupo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 darBaja();
             }
         });
+        //------------------------------------------------------------------------------------------
         btnVerAvisos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,23 +107,24 @@ public class DetalleGrupoActividad extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.avisosActividad,bundle);
             }
         });
-
+        //------------------------------------------------------------------------------------------
         final String palabra=getArguments().getString("palabra");
         vm.cargarDatos(palabra);
         return  view;
     }
-
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     private  String calculaMensajeA(List<Aviso> listaA){
         String rta="";
         rta=vm.calculaAvisos(listaA);
         return  rta;
     }
+    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     private  void  cargarSpinner(List<Usuario> listaU){
         ArrayList<String> participantes=vm.cargaParticipantes(listaU);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,participantes);
         spCompanieros.setAdapter(adapter);
     }
-
+    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     public  void darBaja( ){
             AlertDialog.Builder dialogo1 = new AlertDialog.Builder(getContext(),R.style.Theme_MaterialComponents);
             dialogo1.setTitle("Importante, Dejarás de ser parte del grupo");
@@ -139,14 +143,14 @@ public class DetalleGrupoActividad extends Fragment {
             });
             dialogo1.show();
         }
-
+    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         public void aceptar(int id) {
             vm.SalirDelGrupo(miGrupo.getGrupoId());
             //Toast.makeText(getContext(),"¡Listo!!!", Toast.LENGTH_LONG).show();
             //volver al fragment misAvtividades
             //Navigation.findNavController(view).navigate(R.id.nueva_propiedad);
            }
-
+    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         public void cancelar() {
             //finish();
             Toast.makeText(getContext(),"CANCELADO.", Toast.LENGTH_SHORT).show();
