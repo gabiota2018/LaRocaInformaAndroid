@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.larocainforma.R;
 import com.example.larocainforma.ui.home.MisGruposActivos.MisActividadesVM;
@@ -37,7 +38,7 @@ public class AvisosActividad extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view= inflater.inflate(R.layout.fragment_avisos_actividad, container, false);
         tvAvisosGrupo=view.findViewById(R.id.tvAvisosActividad);
         vm.getListaDeAviso().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
@@ -51,12 +52,13 @@ public class AvisosActividad extends Fragment {
        final String palabra=getArguments().getString("palabra");
        final  String nombreGrupo=getArguments().getString("nombreGrupo");
        tvAvisosGrupo.setText(nombreGrupo);
+       // Toast.makeText(getContext(),"palabra "+palabra, Toast.LENGTH_LONG).show();
        vm.cargarDatos(palabra);
-       eliminarAvisosSinVer(palabra);
+       //vm.eliminarAvisosSV(palabra);
        return  view;
     }
 
-    private void eliminarAvisosSinVer(String palabra) {
-        vm.eliminarAvisosSV(palabra);
-    }
+//    private void eliminarAvisosSinVer(String palabra) {
+//        vm.eliminarAvisosSV(palabra);
+//    }
 }

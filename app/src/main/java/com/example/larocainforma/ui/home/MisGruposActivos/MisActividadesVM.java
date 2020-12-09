@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -49,11 +50,12 @@ public class MisActividadesVM extends AndroidViewModel {
                     ArrayList<String> listado=new ArrayList<>();
                     String cadena="";
                     for(Grupo s:todos){
+                        cadena="";
                         cadena=s.getGrupoId()+"-"+s.getName()+"";
                         listado.add(cadena);
 
                     };
-
+                   // Toast.makeText(context, "listado tiene  "+ listado.size(), Toast.LENGTH_SHORT).show();
                     listaDeGrupo.setValue(listado);
                 }
             }

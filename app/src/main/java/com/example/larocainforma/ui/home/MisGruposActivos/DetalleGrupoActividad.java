@@ -63,20 +63,28 @@ public class DetalleGrupoActividad extends Fragment {
         spCompanieros=view.findViewById(R.id.spCompanieros);
         btnDejarGrupo=view.findViewById(R.id.btnDejarGrupo);
         btnVerAvisos=view.findViewById(R.id.btnVerAvisos);
+
+
+               //cargarSpinner();
+
        //------------------------------------------------------------------------------------------
         vm.getGrupoMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Grupo>() {
             @Override
             public void onChanged(Grupo grupo) {
                 etNombreGrupo.setText(grupo.getName());
-                etTema.setText("Ultimo Tema: Efesios 6");
-                String mensaje=  vm.calculaFecha(grupo.getListaHorarios());//proximaFecha(grupo.getListaHorarios());
-                etProximaReunion.setText("Lunes de 20:30 a 21:30");
-                etEncargado.setText("Coordinador: "+grupo.getCoordinador().getApellido()+""+grupo.getCoordinador().getNombre());
+                String mensaje1=vm.ultimoAviso(grupo.getListaAvisos());
+                etTema.setText(mensaje1);
+                //Toast.makeText(getContext(), "listadoH tiene  "+ grupo.getListaHorarios().size(), Toast.LENGTH_SHORT).show();
+                String mensaje2=vm.calculaFecha(grupo.getListaHorarios());
+                etProximaReunion.setText(mensaje2);
+                // etProximaReunion.setText("-");
+                etEncargado.setText("Coordinador: "+grupo.getCoordinador().getApellido()+" "+grupo.getCoordinador().getNombre()+" Tel. "+grupo.getCoordinador().getTelefono());
+
                 cargarSpinner(grupo.getListaParticipantes());
                 miGrupo=grupo;
             }
-        });
-        //------------------------------------------------------------------------------------------
+       });
+       //------------------------------------------------------------------------------------------
         vm.getAsvMLD().observe(getViewLifecycleOwner(), new Observer<List<AvisosSinVer>>() {
             @Override
             public void onChanged(List<AvisosSinVer> avisosSinVers) {
@@ -103,12 +111,13 @@ public class DetalleGrupoActividad extends Fragment {
             public void onClick(View view) {
                 Bundle bundle=new Bundle();
                 bundle.putString("palabra",miGrupo.getGrupoId()+"");
+               // Toast.makeText(getContext(),"id Grupo "+miGrupo.getGrupoId(), Toast.LENGTH_LONG).show();
                 bundle.putString("nombreGrupo",miGrupo.getName());
                 Navigation.findNavController(view).navigate(R.id.avisosActividad,bundle);
             }
         });
         //------------------------------------------------------------------------------------------
-        final String palabra=getArguments().getString("palabra");
+       final String palabra=getArguments().getString("palabra");
         vm.cargarDatos(palabra);
         return  view;
     }
@@ -120,9 +129,17 @@ public class DetalleGrupoActividad extends Fragment {
     }
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     private  void  cargarSpinner(List<Usuario> listaU){
-        ArrayList<String> participantes=vm.cargaParticipantes(listaU);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,participantes);
-        spCompanieros.setAdapter(adapter);
+       if(listaU.size()>0){
+            ArrayList<String> participantes=vm.cargaParticipantes(listaU);
+            ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,participantes);
+            spCompanieros.setAdapter(adapter);
+        }
+        else {
+            ArrayList<String> vacio=new ArrayList<>();
+            vacio.add("Aún no se ha  registrado inscriptos");
+            ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, vacio);
+            spCompanieros.setAdapter(adaptador);
+        }
     }
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     public  void darBaja( ){

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +13,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.larocainforma.R;
-import com.example.larocainforma.ui.home.MisGruposActivos.DetalleGrupoActividadVM;
 
 import java.util.List;
 
@@ -44,7 +41,7 @@ public class GruposDisponibles extends Fragment {
                              Bundle savedInstanceState) {
         vm= ViewModelProviders.of(this).get(GruposDisponiblesVM.class);
         View view= inflater.inflate(R.layout.fragment_grupos_disponibles, container, false);
-        lv=view.findViewById(R.id.lvListaDisponibles);
+        lv=view.findViewById(R.id.lvHoy);
 
         vm.getListaDeGrupo().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
             @Override

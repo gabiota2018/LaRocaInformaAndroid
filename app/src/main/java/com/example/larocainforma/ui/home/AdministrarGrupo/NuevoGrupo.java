@@ -45,7 +45,7 @@ public class NuevoGrupo extends Fragment {
     private int idActividad,i;
     private ArrayList<Horario> listaHorario;
     private Horario miHorario;
-    private  Grupo miGrupo;
+    private  Grupo miGrupo,otro;
     private List<String> arregloDias;
 
     public NuevoGrupo() {}
@@ -70,7 +70,15 @@ public class NuevoGrupo extends Fragment {
                 spActividades.setAdapter(adapter);
             }
         });
+        //------------- VM miGrupo  ---------------------------------------------------------------
+        vm.getMiGrupoLD().observe(getViewLifecycleOwner(), new Observer<Grupo>() {
+            @Override
+            public void onChanged(Grupo grupo) {
+                vm.guardarUtiliza(grupo.getGrupoId());
 
+                etNombre.setText("Se creó el "+grupo.getName());
+            }
+        });
         //----------- ACTIVIDAD SELECCIONADA------------------------------------------------------------
         spActividades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -128,14 +136,13 @@ public class NuevoGrupo extends Fragment {
                     miGrupo.setFecha_inicio(etFechaInicio.getText().toString());
                     miGrupo.setFecha_fin(etFechaFin.getText().toString());
                     vm.crearGrupo(miGrupo);
-
-
-                    Toast.makeText(getContext(), "total horarios"+listaHorario.size(), Toast.LENGTH_LONG).show();
+                   // vm.ultimoGrupo();
+                    etNombre.setVisibility(View.VISIBLE);
                     //guarda el grupo, horarios y utiliza
                       for (Horario h:listaHorario) {
                         vm.horarioNuevo(h);
                    }
-                   vm.guardarUtiliza(1028);
+
                 }
             }
         });
@@ -168,7 +175,7 @@ public class NuevoGrupo extends Fragment {
             }
         });
         //------------------------------------------------------------------------------------------
-                vm.cargarDatos();
+        vm.cargarDatos();
         return  view;
     }
 
@@ -223,7 +230,7 @@ public class NuevoGrupo extends Fragment {
             miHorario.setHora_fin(mensaje2);
             miHorario.setDia(i);
             listaHorario.add(miHorario);
-
+            Toast.makeText(getContext(), "OK", Toast.LENGTH_LONG).show();
         }
 
 //        miHorario=new Horario();

@@ -43,7 +43,7 @@ public class PerfilViewModel extends AndroidViewModel {
         }
         return usuarioMutableLiveData;
     }
-
+    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     public void obtenerDatos(){
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
@@ -63,50 +63,44 @@ public class PerfilViewModel extends AndroidViewModel {
             }
         });
     }
-
-
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     public void actualizar(Usuario usuario){
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
-        int id=usuario.getUsuarioId();
-        Call<Usuario> usuarioActualizado= ApiClient.getMyApiClient().actualizar(accessToken,10 ,usuario);
-//sacar los ancabezados...
-        String[] partes = usuario.getNombre().split(":");
+
+        //sacar los ancabezados...
+        //usuarioId-nombre-apellido-telefono-mail-clave-nombre_usuario-tipo_usuario-fecha_nacimiento-borrado
+        String[] partes = usuario.getNombre().split(" ");
         usuario.setNombre((partes[1]));
 
-        partes = usuario.getApellido().split(":");
+        partes = usuario.getApellido().split(" ");
         usuario.setApellido(partes[1]);
 
-        partes = usuario.getTelefono().split(":");
+        partes = usuario.getTelefono().split(" ");
         usuario.setTelefono(partes[1]);
 
-        partes = usuario.getMail().split(":");
+        partes = usuario.getMail().split(" ");
         usuario.setMail(partes[1]);
 
-        partes = usuario.getFecha_nacimiento().split(":");
+        partes = usuario.getFecha_nacimiento().split(" ");
         usuario.setFecha_nacimiento(partes[1]);
 
-        partes = usuario.getNombre_usuario().split(":");
-        usuario.setNombre_usuario(partes[1]);
+        usuario.setClave("d");
+        usuario.setNombre_usuario("d");
+        usuario.setTipo_usuario("d");
 
-        partes = usuario.getClave().split(":");
-        usuario.setClave(partes[1]);
-
-       usuarioActualizado.enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                Log.d("salida","por actualizar");
-                if(response.isSuccessful()){
-                    Toast.makeText(getApplication(),"Datos actualizados",Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                Log.d("salida",t.getMessage());
-            }
-        });
+       Call<Usuario> usuarioCall= ApiClient.getMyApiClient().actualizar(accessToken,usuario);
+       usuarioCall.enqueue(new Callback<Usuario>() {
+           @Override
+           public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+               if(response.isSuccessful())
+                   Toast.makeText(getApplication(),"Datos actualizados",Toast.LENGTH_LONG).show();
+           }
+           @Override
+           public void onFailure(Call<Usuario> call, Throwable t) {  }
+       });
     }
+    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     public void guardarPreferencias(String tipoUsuario){
         SharedPreferences sp = context.getSharedPreferences("tipoUsuario", 0);
         SharedPreferences.Editor editor = sp.edit();

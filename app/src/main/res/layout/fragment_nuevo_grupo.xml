@@ -129,8 +129,8 @@ tools:context=".ui.home.AdministrarGrupo.NuevoGrupo">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Anterior" />
-
+            android:text="-"
+            android:textSize="24sp" />
         <Button
             android:id="@+id/btnDia"
             android:layout_width="wrap_content"
@@ -141,8 +141,8 @@ tools:context=".ui.home.AdministrarGrupo.NuevoGrupo">
             android:id="@+id/btnPosterior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="Posterior" />
+            android:text="+"
+            android:textSize="24sp" />
     </LinearLayout>
     <!--xxxxxxxxxxxxxxxx         HORAS            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
     <LinearLayout
@@ -234,6 +234,22 @@ tools:context=".ui.home.AdministrarGrupo.NuevoGrupo">
             android:textColor="#000"
             android:textSize="14sp" />
 
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#EFED23"
+            android:ems="10"
+            android:enabled="true"
+            android:gravity="center_horizontal|left"
+            android:hint="El nombre es asignado automáticamente"
+            android:inputType="text"
+            android:textColor="#004D40"
+            android:textSize="24sp"
+            android:visibility="gone" />
+
+
         <Button
             android:id="@+id/btnCrearGrupo"
             android:layout_width="match_parent"
@@ -249,20 +265,15 @@ tools:context=".ui.home.AdministrarGrupo.NuevoGrupo">
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
 
+
         <EditText
-            android:id="@+id/etNombre"
+            android:id="@+id/etLugar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:enabled="true"
-            android:gravity="center_horizontal|left"
-            android:hint="El nombre es asignado automáticamente"
-            android:inputType="text"
-            android:textColor="#fff"
-            android:background="#3F9191"
-            android:textSize="14sp" />
+            android:textSize="20dp"
+            android:visibility="invisible" />
     </LinearLayout>
 </LinearLayout>
 

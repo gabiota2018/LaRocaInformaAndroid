@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -43,19 +44,18 @@ public class MiSemanaVM extends AndroidViewModel {
         SharedPreferences sp = context.getSharedPreferences("token", 0);
         String accessToken = sp.getString("token", "");
         Call<List<Utiliza>> utilizaCall=ApiClient.getMyApiClient().utilizaPorUsuario(accessToken);
-        //Log.d("salida","entro a cargar datos");
         utilizaCall.enqueue(new Callback<List<Utiliza>>() {
             @Override
             public void onResponse(Call<List<Utiliza>> call, Response<List<Utiliza>> response) {
-                Log.d("salida","entro a CALL");
                 if(response.isSuccessful()){ Log.d("salida","response.isSuccessful()");
                     lista=response.body();
+                 // Toast.makeText(context, "lista tiene "+lista.size(), Toast.LENGTH_SHORT).show();
                     ArrayList<String> listado=new ArrayList<>();
                     String cadena="";
                     for(Utiliza aux:lista){
-                        cadena=aux.getHorario().getDia()+"/"+aux.getGrupo().getName()+": "+aux.getHorario().getHora_inicio()+"-"+aux.getHorario().getHora_fin();
+                        cadena=aux.getHorario().getDia()+"/"+aux.getGrupo().getName()+" de "+aux.getHorario().getHora_inicio()+" a "+aux.getHorario().getHora_fin();
                         listado.add(cadena);
-                        Log.d("salida",cadena);
+                        //Log.d("salida",cadena);
                     };
 
                     utilizaMutableLiveData.setValue(listado);

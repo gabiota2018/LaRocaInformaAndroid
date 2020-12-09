@@ -63,8 +63,8 @@ public class ApiClient {
         @GET("usuario/{id}")
         Call<Usuario> unUsuario(@Header("Authorization") String token,@Path("id")int id);
 
-        @PUT("usuario/{id}")
-        Call<Usuario> actualizar(@Header("Authorization")String token,@Path("id") int id,@Body Usuario p);
+        @PUT("usuario")
+        Call<Usuario> actualizar(@Header("Authorization")String token,@Body Usuario p);
 
 //------ ACTIVIDAD -----------------------------------------------------------------------------------
         @GET("actividad")
@@ -75,12 +75,14 @@ public class ApiClient {
 
 //------ GRUPO -----------------------------------------------------------------------------------
 
-        @GET("grupo/DetalleGrupo/{id}")
+        @GET("grupo/TraerGrupo/{id}")
         Call<Grupo> detalleGrupo(@Header("Authorization") String token,@Path("id")int id);
 
         @GET("grupo/MiniDetalleGrupo/{id}")
         Call<Grupo> miniDetalleGrupo(@Header("Authorization") String token,@Path("id")int id);
 
+        @GET("grupo/Ultimo")
+        Call<Grupo> ultimoGrupo(@Header("Authorization") String token);
 
         @GET("grupo/PorUsuario")
         Call<List<Grupo>> listarGruposUsuario(@Header("Authorization") String token);
@@ -91,8 +93,8 @@ public class ApiClient {
         @GET("grupo/PorActividad/{id}")
         Call<List<Grupo>> gruposPorActividad(@Header("Authorization") String token,@Path("id")int id);
 
-        @DELETE("grupo")
-        Call<Grupo> cambiaEstado(@Header("Authorization") String token,@Body Grupo g);
+        @DELETE("grupo/CambiaEstado/{id}")
+        Call<Grupo> modificaEstado(@Header("Authorization") String token,@Path("id")int id,@Body Grupo g);
 
         @POST("grupo")
         Call<Grupo> nuevoGrupo(@Header("Authorization") String token,@Body Grupo g);
@@ -129,6 +131,9 @@ public class ApiClient {
 
         @GET("utiliza/UtilizaPorUsuario")
         Call<List<Utiliza>> utilizaPorUsuario(@Header("Authorization") String token);
+
+        @GET("utiliza/UtilizaPorDia/{id}")
+        Call<List<Utiliza>> porDia(@Header("Authorization") String token, @Path("id")int id);
 
         @POST("utiliza/Actualiza/{id}")
         Call<Utiliza> actualizarUtiliza(@Header("Authorization") String token, @Path("id")int id);

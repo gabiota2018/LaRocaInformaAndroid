@@ -1,161 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#4E5353"
     tools:context=".ui.home.Perfil.PerfilFragment">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <EditText
         android:id="@+id/etApellido"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/largo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_weight="1"
         android:ems="10"
-        android:enabled="false"
-        android:gravity="center_horizontal|left"
-        android:hint="Apellido"
-        android:inputType="text"/>
-
-
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/etNombre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
+        android:layout_weight="1"
         android:ems="10"
-        android:enabled="false"
-        android:gravity="center_horizontal|left"
-        android:hint="Nombre completo"
-        android:inputType="text"/>
-
-
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/etTelefono"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="150dp"
+        android:layout_weight="1"
         android:ems="10"
-        android:enabled="false"
-        android:gravity="center_horizontal|left"
-        android:hint="Código+nro"
-        android:inputType="text"/>
-
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        android:textColor="#FFFFFF" />
 
 
     <EditText
         android:id="@+id/etMail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTelefono"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="200dp"
+        android:layout_weight="1"
         android:ems="10"
-        android:enabled="false"
-        android:gravity="center_horizontal|left"
-        android:hint="Email"
-        android:inputType="text"/>
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        android:textColor="#FFFFFF" />
 
 
     <EditText
         android:id="@+id/etFechaNacimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="250dp"
+        android:layout_weight="1"
         android:ems="10"
-        android:enabled="false"
-        android:gravity="center_horizontal|left"
-        android:hint="Fecha de Nacimiento"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMail" />
+        android:inputType="textPersonName"
+        android:paddingTop="15dp"
+        android:textColor="#FFFFFF" />
+
 
     <EditText
         android:id="@+id/etNombreUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="300dp"
+        android:layout_weight="1"
         android:ems="10"
-        android:enabled="false"
-        android:gravity="center_horizontal|left"
-        android:hint="Usuario"
-        android:inputType="text"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etFechaNacimiento" />
-
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="350dp"
-        android:ems="10"
-        android:enabled="false"
-        android:gravity="center_horizontal|left"
-        android:hint="Password"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMail" />
-
-    <Button
-        android:id="@+id/btnActualizarPerfil"
-        android:layout_width="match_parent"
-        android:layout_height="29dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="50dp"
-        android:background="@color/design_default_color_on_secondary"
-        android:gravity="center_horizontal|left"
-        android:text="EDITAR"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="Nombre de usuario: "
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/etTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="450dp"
-        android:visibility="invisible"
-         />
+        android:layout_weight="1"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="Usted es miembro de la iglesia: "
+        android:textColor="#FFFFFF" />
+
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <LinearLayout
+        android:id="@+id/lyGuardarPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#D9F6F3"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/btnGuardarPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@color/design_default_color_on_secondary"
+            android:paddingStart="15dp"
+            android:text="GUARDAR modificaciones"
+            android:textAlignment="center"
+            android:textColor="#18CFBD" />
+
+        <Button
+            android:id="@+id/btnCancelar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="#18CFBD"
+            android:paddingStart="15dp"
+            android:text="   CANCELAR     "
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_on_secondary" />
+
+    </LinearLayout>
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
     <!--tools:ignore="OnClick"-->
+ </LinearLayout>
 
-
-</FrameLayout>
+</ScrollView>

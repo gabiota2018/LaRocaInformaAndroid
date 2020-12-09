@@ -46,6 +46,9 @@ public class PuedoHacer extends Fragment {
             }
         });
 
+
+
+// Toast.makeText(context, "lista tiene "+lista.size(), Toast.LENGTH_SHORT).show();
         lv=view.findViewById(R.id.lvListaActividadesHacer);
         vm.cargarDatos();
         lv.setClickable(true);

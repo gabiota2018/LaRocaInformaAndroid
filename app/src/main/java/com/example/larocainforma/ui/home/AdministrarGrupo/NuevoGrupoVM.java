@@ -98,8 +98,9 @@ public class NuevoGrupoVM extends AndroidViewModel {
         public void onResponse(Call<Grupo> call, Response<Grupo> response) {
             if(response.isSuccessful()) {
                 Toast.makeText(context, "Nuevo grupo creado ", Toast.LENGTH_SHORT).show();
-                //miGrupoLD.postValue(response.body());
-
+               // Grupo grupoNuevo=response.body();
+                //miGrupoLD.postValue(grupoNuevo);
+                ultimoGrupo();
             }
             else
                 Toast.makeText(context, "No se guardo ", Toast.LENGTH_SHORT).show();
@@ -109,52 +110,57 @@ public class NuevoGrupoVM extends AndroidViewModel {
     });
     }
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    public void horarioNuevo(Horario miHorario) {
-
+    public void horarioNuevo(final Horario miHorario) {
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
 
-        Toast.makeText(context, "h.dia "+miHorario.getDia()+"h.inicio "+miHorario.getHora_inicio()+"h.fin "+miHorario.getHora_fin(), Toast.LENGTH_LONG).show();
-
-//        Call<Horario> g=ApiClient.getMyApiClient().crearHorario(accessToken,miHorario);
-//        g.enqueue(new Callback<Horario>() {
-//            @Override
-//            public void onResponse(Call<Horario> call, Response<Horario> response) {
-//                if(response.isSuccessful())
-//                // Log.d("salida", "Nuevo HORARIO creado ");
-//                    Toast.makeText(context, "guardado ", Toast.LENGTH_LONG).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Horario> call, Throwable t) {
-//
-//            }
-//        });
-
+        Call<Horario> g=ApiClient.getMyApiClient().crearHorario(accessToken,miHorario);
+        g.enqueue(new Callback<Horario>() {
+            @Override
+            public void onResponse(Call<Horario> call, Response<Horario> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(context, "OK", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Horario> call, Throwable t) { }
+        });
     }
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     public void guardarUtiliza(int grupoId) {
-        Toast.makeText(context, "Entro a guardar los UTILIZA "+grupoId, Toast.LENGTH_SHORT).show();
+        SharedPreferences sp=context.getSharedPreferences("token",0);
+        String accessToken=sp.getString("token","");
+      Toast.makeText(context, "entro a utiliza idGrupo"+grupoId, Toast.LENGTH_SHORT).show();
 
-//        Call<Utiliza> utilizaCall=ApiClient.getMyApiClient().actualizarUtiliza(accessToken,grupoId);
-//        utilizaCall.enqueue(new Callback<Utiliza>() {
-//            @Override
-//            public void onResponse(Call<Utiliza> call, Response<Utiliza> response) {
-//                if(response.isSuccessful())
-//                    //Log.d("salida", "guardo los UTILIZA ");
-//                    Toast.makeText(context, "Nuevo utiliza ", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Utiliza> call, Throwable t) {
-//
-//            }
-//        });
+        Call<Utiliza> utilizaCall=ApiClient.getMyApiClient().actualizarUtiliza(accessToken,grupoId);
+        utilizaCall.enqueue(new Callback<Utiliza>() {
+            @Override
+            public void onResponse(Call<Utiliza> call, Response<Utiliza> response) {
+                if(response.isSuccessful())
+                    Toast.makeText(context, "El nuevo horario fue guardado", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<Utiliza> call, Throwable t) {  }
+        });
     }
 
-
-
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    public void ultimoGrupo() {
+        SharedPreferences sp=context.getSharedPreferences("token",0);
+        String accessToken=sp.getString("token","");
+       Call<Grupo> ultimo=ApiClient.getMyApiClient().ultimoGrupo(accessToken);
+       ultimo.enqueue(new Callback<Grupo>() {
+           @Override
+           public void onResponse(Call<Grupo> call, Response<Grupo> response) {
+               if(response.isSuccessful())
+                   miGrupoLD.postValue(response.body());
+           }
 
+           @Override
+           public void onFailure(Call<Grupo> call, Throwable t) {
 
+           }
+       });
+     }
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 }

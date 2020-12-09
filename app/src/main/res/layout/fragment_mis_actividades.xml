@@ -1,37 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#91BFBF"
+    android:orientation="vertical"
     tools:context=".ui.home.MisGruposActivos.MisActividades">
 
 
-    <Button
-        android:id="@+id/btnSiguiente1"
-        android:layout_width="match_parent"
-        android:layout_height="29dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="50dp"
-        android:background="@color/design_default_color_on_secondary"
-        android:gravity="center_horizontal|left"
-        android:text="btnSiguiente1"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMensajeActividades" />
-
-
     <ListView
-        android:id="@+id/lvListaActividades"
+        android:id="@+id/listaActividades"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-    />
+        android:layout_height="wrap_content" />
 
 
+</LinearLayout>
 
-</FrameLayout>

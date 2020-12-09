@@ -96,26 +96,26 @@ public class ParaCoordinadoresVM extends AndroidViewModel {
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
 
-        Log.d("salida","pidio el token");
-
-        estado=esta;
+        int estado=esta;
         Grupo miGrupo=new Grupo();
         miGrupo.setGrupoId(idGrupo);
         miGrupo.setName("d");
         miGrupo.setFecha_inicio("d");
         miGrupo.setBorrado(estado);
 
-        Log.d("salida","armo el Grupo");
-        Call<Grupo> gCall=ApiClient.getMyApiClient().cambiaEstado(accessToken,miGrupo);
+        Log.d("salida","armo el Grupo "+miGrupo.getGrupoId()+"-"+miGrupo.getBorrado());
+        Call<Grupo> gCall=ApiClient.getMyApiClient().modificaEstado(accessToken,idGrupo,miGrupo);
         gCall.enqueue(new Callback<Grupo>() {
            @Override
            public void onResponse(Call<Grupo> call, Response<Grupo> response) {
-
+            if(response.isSuccessful())
+                Toast.makeText(context, "OK", Toast.LENGTH_SHORT).show();
+               Log.d("salida","ok estado ");
            }
 
            @Override
            public void onFailure(Call<Grupo> call, Throwable t) {
-
+               Toast.makeText(context, "Inténtelo más tarde", Toast.LENGTH_SHORT).show();
            }
        });
     }

@@ -34,7 +34,7 @@ public class ParaCoordinadores extends Fragment {
     private TextView tv4,tv5;
     private Spinner spActividades;
     private EditText etEnviarMensaje,etDias;
-    private Button btnEnviarMensaje;
+    private Button btnEnviarMensaje,btnSuspender;
     private View view;
     private List<String> miLista;
     private String opcion;
@@ -68,18 +68,22 @@ public class ParaCoordinadores extends Fragment {
                     visibilizar1("para ENVIAR el MENSAJE");
                 }
                 else if (id == rbModificar.getId()) {
+                    invisible();
                     numOpcion=2;
                     visibilizar1("que desee MODIFICAR");
                 }
                 else if (id == rbSuspender.getId()) {
+                    invisible();
                     numOpcion=3;
                     visibilizar1("que desee SUSPENDER");
                 }
                 else if (id == rbBorrar.getId()) {
+                    invisible();
                     numOpcion=4;//terminar no borrar
                     visibilizar1("que va a TERMINAR su actividad");
                 }
                 else if (id == rbActivar.getId()) {
+                    invisible();
                     numOpcion=5;
                     visibilizar1("que desee ACTIVAR");
                 }
@@ -111,6 +115,13 @@ public class ParaCoordinadores extends Fragment {
             @Override
             public void onClick(View view) {
                 verificarCampoLLeno();
+            }
+        });
+        //------------ BOTON SUSPENDER GRUPO---------------------------------------------------------
+        btnSuspender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.estadoGrupo(idGrupo,1);
             }
         });
         //--------------------------------------------------------------------------------
@@ -147,7 +158,9 @@ public class ParaCoordinadores extends Fragment {
         btnEnviarMensaje.setVisibility(View.INVISIBLE);
         tv5.setVisibility(View.INVISIBLE);
         etDias.setVisibility(View.INVISIBLE);
-        lyAmarillo.setVisibility(View.INVISIBLE);
+        lyAmarillo.setVisibility(View.GONE);
+        btnEnviarMensaje.setVisibility(View.GONE);
+        btnSuspender.setVisibility(View.GONE);
     }
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     private void enviarMensaje(){
@@ -159,7 +172,7 @@ public class ParaCoordinadores extends Fragment {
     }
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     private void modificarGrupo(int idGrupo){
-        Toast.makeText(getContext(), "idGrupo:"+idGrupo, Toast.LENGTH_LONG).show();
+       // Toast.makeText(getContext(), "idGrupo:"+idGrupo, Toast.LENGTH_LONG).show();
         Bundle bundle=new Bundle();
         String palabra=Integer.toString(idGrupo);
 
@@ -169,16 +182,18 @@ public class ParaCoordinadores extends Fragment {
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     private void procesarItem(String seleccionado){
        // Toast.makeText(getContext(), "seleccionado "+seleccionado, Toast.LENGTH_LONG).show();
+
         String[] partes = seleccionado.split("-");
         if(partes.length>1)
         {
-            idGrupo = Integer.parseInt(partes[0]);Toast.makeText(getContext(), "idGrupo "+idGrupo, Toast.LENGTH_LONG).show();
+            idGrupo = Integer.parseInt(partes[0]);//Toast.makeText(getContext(), "idGrupo "+idGrupo, Toast.LENGTH_LONG).show();
             switch (numOpcion){
-                case 1: enviarMensaje();break;
+                case 1: btnEnviarMensaje.setVisibility(View.VISIBLE);
+                        enviarMensaje();break;
                 case 2: modificarGrupo(idGrupo);break;
-                case 3:  vm.estadoGrupo(idGrupo,1);break;
-                case 4:  vm.estadoGrupo(idGrupo,2);break;
-                case 5:  vm.estadoGrupo(idGrupo,0);break;
+                case 3: btnSuspender.setVisibility(View.VISIBLE);break;
+                case 4: vm.estadoGrupo(idGrupo,2);break;
+                case 5: vm.estadoGrupo(idGrupo,0);break;
             }
         }
 
@@ -192,13 +207,18 @@ public class ParaCoordinadores extends Fragment {
         rbSuspender = view.findViewById(R.id.rbSuspender);
         rbBorrar = view.findViewById(R.id.rbBorrar);
         rbActivar = view.findViewById(R.id.rbActivar);
+
         tv4 = view.findViewById(R.id.tv4);
         tv5 = view.findViewById(R.id.tv5);
+
         spActividades = view.findViewById(R.id.spGrupos);
+
         etEnviarMensaje = view.findViewById(R.id.etEnviarMensaje);
-        btnEnviarMensaje = view.findViewById(R.id.btnEnviarMensaje);
         etDias=view.findViewById(R.id.etDias);
-        //spinerVisible=false;
+
+        btnEnviarMensaje = view.findViewById(R.id.btnEnviarMensaje);
+        btnSuspender = view.findViewById(R.id.btnSuspender);
+
         lyAmarillo=view.findViewById(R.id.lyAmarillo);
     }
     //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

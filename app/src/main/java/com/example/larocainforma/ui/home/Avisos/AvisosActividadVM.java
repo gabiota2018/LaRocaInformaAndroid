@@ -41,10 +41,9 @@ public class AvisosActividadVM extends AndroidViewModel {
     public void cargarDatos(String palabra){
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
-
-        String[] partes = palabra.split("-");
-        final int idGrupo = Integer.parseInt(partes[0]);
-
+        //Toast.makeText(context,"palabra "+palabra, Toast.LENGTH_LONG).show();
+        int idGrupo=Integer.parseInt(palabra);
+Toast.makeText(context,"id Grupo "+idGrupo, Toast.LENGTH_LONG).show();
         Call<List<Aviso>> listaCall = ApiClient.getMyApiClient().activosAvisosGrupo(accessToken,idGrupo);
         listaCall.enqueue(new Callback<List<Aviso>>() {
             @Override

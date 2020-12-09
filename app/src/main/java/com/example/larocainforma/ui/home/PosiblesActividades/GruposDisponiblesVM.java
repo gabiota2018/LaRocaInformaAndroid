@@ -62,16 +62,17 @@ public class GruposDisponiblesVM  extends AndroidViewModel {
                     String proximo,cadena="";
                     for(Grupo s:todos) {
                         String[] nombre=s.getName().split("-");
-                        cadena =" * "+ s.getGrupoId() + "-" + nombre[0] + "";
-                       // Log.d("salida","grupo "+cadena);
+                        cadena = nombre[0] + " "+nombre[1];
                         listado.add(cadena);
                         cadena = "A cargo de: " + s.getCoordinador().getNombre() + " " + s.getCoordinador().getApellido();
-                        listado.add(cadena);Log.d("salida","cargo "+cadena);
+                        listado.add(cadena);
                         for (Horario h : s.getListaHorarios()) {
-                            cadena= " - "+h.getHorarioId()+"-"+h.getDia()+"-"+nombreDia(h.getDia())+" de "+h.getHora_inicio()+" a "+h.getHora_fin();
-                            //Log.d("salida","cadena que agrego al listado"+cadena);
+                            cadena="-"+nombreDia(h.getDia());
+                            cadena+= " de "+h.getHora_inicio()+" a "+h.getHora_fin();
                             listado.add(cadena);
                         }
+                        cadena="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+                        listado.add(cadena);
                     }
                     listaDeGrupo.setValue(listado);
                 };
@@ -80,6 +81,8 @@ public class GruposDisponiblesVM  extends AndroidViewModel {
             public void onFailure(Call<List<Grupo>> call, Throwable t) { }
         });
     }
+
+
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     private String nombreDia(int d){
         String proximo="";

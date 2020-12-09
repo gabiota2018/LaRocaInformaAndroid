@@ -23,8 +23,12 @@ import com.example.larocainforma.ui.home.request.ApiClient;
 import com.example.larocainforma.ui.home.request.SharedPreference;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,16 +63,17 @@ public class DetalleGrupoActividadVM extends AndroidViewModel {
         accessToken = sp.getString("token", "");
         String[] partes = palabra.split("-");
         final int idGrupo = Integer.parseInt(partes[0]);
-        Log.d("salida","entro a grupoCall");
+//        Log.d("salida","entro a grupoCall");
 
         Call<Grupo> grupoCall=ApiClient.getMyApiClient().detalleGrupo(accessToken,idGrupo);
         grupoCall.enqueue(new Callback<Grupo>() {
             @Override
             public void onResponse(Call<Grupo> call, Response<Grupo> response) {
                 if(response.isSuccessful())
+                    //Toast.makeText(context,"idGrupo OK "+idGrupo, Toast.LENGTH_LONG).show();
                      grupoMutableLiveData.postValue(response.body());
                      //traer avisos sin ver por usuario y grupo
-                       cuentaAvisosSinVer(idGrupo);
+                    // cuentaAvisosSinVer(idGrupo);
             }
 
             @Override
@@ -96,11 +101,46 @@ public class DetalleGrupoActividadVM extends AndroidViewModel {
 
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     public  String calculaFecha(List<Horario> listaH){
-        String rta="";
+       String diaSemana,rta="Hola";
+        List<Integer> distancias= new ArrayList<Integer>();
+        boolean encontre=false;
+        Calendar calendar=Calendar.getInstance();
+        int hoy = calendar.get(Calendar.DAY_OF_WEEK);
+
+
+        int contador=0;
+        int salto=hoy-1;
+        int pos=0;
+
         for (Horario h:listaH) {
-            rta=rta+nombreDia(h.getDia())+": "+h.getHora_inicio()+"hs. -"+h.getHora_fin()+"hs. -";
+           while (!encontre){
+               if(salto==7){ salto=0;}
+               if(contador==h.getDia()){
+                    distancias.add(contador);
+                    encontre=true;
+                }
+                contador++;
+                salto++;
+           }
         }
+        if(distancias.size()>1) pos=buscarMenor(distancias);
+        diaSemana=nombreDia(listaH.get(pos).getDia());
+        rta="Próximo encuentro: "+" "+diaSemana+" a las  "+listaH.get(pos).getHora_inicio();
+
+
         return  rta;
+
+    }
+    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    private int buscarMenor(List<Integer> distancias) {
+        int pos=0,menor=distancias.get(0);
+        for (int i=0;i<distancias.size();i++) {
+            if(distancias.get(i)<menor) {
+                menor=distancias.get(i);
+                pos=i;
+            }
+        }
+        return pos;
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     private String nombreDia(int d){
@@ -122,7 +162,7 @@ public class DetalleGrupoActividadVM extends AndroidViewModel {
         int cantidad=0;
         if(listaA.size()>0) {
             cantidad=listaA.size();
-            rta="Hay "+cantidad+" avisos para ver";
+            rta="Hay "+cantidad+" avisos NUEVOS";
         }
         return  rta;
     }
@@ -138,9 +178,6 @@ public class DetalleGrupoActividadVM extends AndroidViewModel {
     }
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     public void SalirDelGrupo(int grupoId) {
-
-
-
         Call<Participa> bajaCall = ApiClient.getMyApiClient().bajaParticipa(accessToken,grupoId);
         bajaCall.enqueue(new Callback<Participa>() {
             @Override
@@ -155,4 +192,14 @@ public class DetalleGrupoActividadVM extends AndroidViewModel {
 
 
     }
+    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    public String ultimoAviso(List<Aviso> listaAvisos) {
+        String rta="";
+        if(listaAvisos.size()>0) {
+            rta = "Último aviso: "+ listaAvisos.get(listaAvisos.size()-1).getContenido();
+        }
+        else rta="No hay notificaciones";
+        return  rta;
+    }
+    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 }

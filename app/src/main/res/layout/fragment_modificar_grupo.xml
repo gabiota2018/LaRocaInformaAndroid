@@ -172,7 +172,8 @@ tools:context=".ui.home.AdministrarGrupo.ModificarGrupo">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Anterior" />
+                    android:text="-"
+                    android:textSize="24sp" />
 
                 <Button
                     android:id="@+id/btnDiaM"
@@ -184,8 +185,8 @@ tools:context=".ui.home.AdministrarGrupo.ModificarGrupo">
                     android:id="@+id/btnPosteriorM"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:text="Posterior" />
+                    android:text="+"
+                    android:textSize="24sp" />
             </LinearLayout>
             <!--xxxxxxxxxxxxxxxx         HORAS            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
             <LinearLayout

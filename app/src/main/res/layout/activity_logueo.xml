@@ -18,7 +18,7 @@
         android:gravity="center_horizontal|left"
 
         android:inputType="text"
-        android:text="Juan"
+        android:text="juan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"

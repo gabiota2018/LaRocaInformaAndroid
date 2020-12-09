@@ -15,8 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.larocainforma.R;
+import com.example.larocainforma.ui.home.Clases.Grupo;
 
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class MisActividades extends Fragment {
         super.onCreate(savedInstanceState);
         vm= ViewModelProviders.of(this).get(MisActividadesVM.class);
     }
-
+//--------------------------------------------------------------------------------------------------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,11 +42,14 @@ public class MisActividades extends Fragment {
         vm.getListaDeGrupo().observe(getViewLifecycleOwner(),new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> strings) {
+                //Toast.makeText(getContext(), "listado tiene  "+ strings.size(), Toast.LENGTH_SHORT).show();
                 ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,strings);
                 lv.setAdapter(adapter);
+
+
             }
         });
-       lv=view.findViewById(R.id.lvListaActividades);
+       lv=view.findViewById(R.id.listaActividades);
        vm.cargarDatos();
        lv.setClickable(true);
        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -54,11 +59,11 @@ public class MisActividades extends Fragment {
                Bundle bundle=new Bundle();
                bundle.putString("palabra",tv.getText().toString());
                String palabra=tv.getText().toString();
-                // Toast.makeText(getContext(),palabra,Toast.LENGTH_LONG).show();
                Navigation.findNavController(view).navigate(R.id.detalleActividad, bundle);
 
            }
         });
+//--------------------------------------------------------------------------------------------------
       return  view;
     }
 

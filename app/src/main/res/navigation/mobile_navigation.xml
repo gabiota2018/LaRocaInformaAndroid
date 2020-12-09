@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/misActividades"
         android:name="com.example.larocainforma.ui.home.MisGruposActivos.MisActividades"
-        android:label="fragment_mis_actividades"
+        android:label="Mis actividades"
         tools:layout="@layout/fragment_mis_actividades" >
         <action
             android:id="@+id/action_misActividades_to_detalleActividad"
@@ -25,12 +25,12 @@
     <fragment
         android:id="@+id/perfil"
         android:name="com.example.larocainforma.ui.home.Perfil.PerfilFragment"
-        android:label="fragment_perfil"
+        android:label="Mi perfil"
         tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/miSemana"
         android:name="com.example.larocainforma.ui.home.MiSemana.MiSemana"
-        android:label="fragment_mi_semana"
+        android:label="Horario semanal"
         tools:layout="@layout/fragment_mi_semana" >
         <action
             android:id="@+id/action_miSemana_to_detallePorDia"
@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/puedoHacer"
         android:name="com.example.larocainforma.ui.home.PosiblesActividades.PuedoHacer"
-        android:label="fragment_puedo_hacer"
+        android:label="Te sugerimos..."
         tools:layout="@layout/fragment_puedo_hacer" >
         <action
             android:id="@+id/action_puedoHacer_to_gruposDisponibles"
@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/detalleActividad"
         android:name="com.example.larocainforma.ui.home.MisGruposActivos.DetalleGrupoActividad"
-        android:label="fragment_detalle_actividad"
+        android:label="Información del grupo"
         tools:layout="@layout/fragment_detalle_grupoactividad" >
         <action
             android:id="@+id/action_detalleActividad_to_misActividades"
@@ -60,7 +60,7 @@
     <fragment
         android:id="@+id/avisosActividad"
         android:name="com.example.larocainforma.ui.home.Avisos.AvisosActividad"
-        android:label="fragment_avisos_actividad"
+        android:label="Avisos para el grupo"
         tools:layout="@layout/fragment_avisos_actividad" >
         <action
             android:id="@+id/action_avisosActividad_to_detalleActividad"
@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/gruposDisponibles"
         android:name="com.example.larocainforma.ui.home.PosiblesActividades.GruposDisponibles"
-        android:label="fragment_grupos_disponibles"
+        android:label="Grupos disponibles"
         tools:layout="@layout/fragment_grupos_disponibles" >
         <action
             android:id="@+id/action_gruposDisponibles_to_puedoHacer"
@@ -78,7 +78,7 @@
     <fragment
         android:id="@+id/detallePorDia"
         android:name="com.example.larocainforma.ui.home.MiSemana.DetallePorDia"
-        android:label="fragment_detalle_por_dia"
+        android:label="Mis horarios diarios"
         tools:layout="@layout/fragment_detalle_por_dia" >
         <action
             android:id="@+id/action_detallePorDia_to_miSemana"
@@ -87,7 +87,7 @@
     <fragment
         android:id="@+id/paraCoordinadores"
         android:name="com.example.larocainforma.ui.home.AdministrarGrupo.ParaCoordinadores"
-        android:label="fragment_para_coordinadores"
+        android:label="Administrar Grupos"
         tools:layout="@layout/fragment_para_coordinadores" >
         <action
             android:id="@+id/action_paraCoordinadores_to_nuevoGrupo"
@@ -99,7 +99,7 @@
     <fragment
         android:id="@+id/nuevoGrupo"
         android:name="com.example.larocainforma.ui.home.AdministrarGrupo.NuevoGrupo"
-        android:label="fragment_nuevo_grupo"
+        android:label="Registrar grupo"
         tools:layout="@layout/fragment_nuevo_grupo" >
         <action
             android:id="@+id/action_nuevoGrupo_to_paraCoordinadores"
@@ -108,7 +108,7 @@
     <fragment
         android:id="@+id/modificarGrupo"
         android:name="com.example.larocainforma.ui.home.AdministrarGrupo.ModificarGrupo"
-        android:label="fragment_modificar_grupo"
+        android:label="Modificar datos"
         tools:layout="@layout/fragment_modificar_grupo" >
         <action
             android:id="@+id/action_modificarGrupo_to_paraCoordinadores"

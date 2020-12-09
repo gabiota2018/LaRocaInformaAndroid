@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -41,14 +42,19 @@ public class PuedoHacerVM extends AndroidViewModel {
     }
 
     public void cargarDatos(){
+        //Toast.makeText(context, "entro a cargarDatos ", Toast.LENGTH_SHORT).show();
+
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
+
+
         Call<List<Actividad>> listaCall = ApiClient.getMyApiClient().listarHabilitadas(accessToken);
         listaCall.enqueue(new Callback<List<Actividad>>() {
         @Override
         public void onResponse(Call<List<Actividad>> call, Response<List<Actividad>> response) {
            if(response.isSuccessful()){
                 todas=response.body();
+               //Toast.makeText(context, "lista tiene "+todas.size(), Toast.LENGTH_SHORT).show();
                 ArrayList<String> listado=new ArrayList<>();
                 String cadena="";
                 for(Actividad s:todas){
